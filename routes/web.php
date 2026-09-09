@@ -18,3 +18,15 @@ Route::get('/contato', function(){
     return 'pagina contato';
 });
 
+Route::get('/produto/$id', function($id){
+    return "Produto escolhido: " . $id;
+});
+
+Route::get('/categoria/id', function($id){
+    return "Categoria escolhida: " . $id;
+});
+
+Route::get('/usuario/$id', function($id){
+    return "Usuario escolhido: " . $id;
+});
+
