@@ -27,4 +27,9 @@ Route::get('/usuario/{$id}', function($id){
     return "Usuario escolhido: " . $id;
 });
 
+Route::get('/alunos/curso/{curso}', [AlunoController::class, 'alunosPorCurso']);
+Route::get('/alunos/buscar/{palavra}', [AlunoController::class, 'alunosPorNome']);
+Route::get('/alunos/recentes', [AlunoController::class, 'alunosRecentes']);
+Route::get('/alunos/quantidade', [AlunoController::class, 'quantidadeAlunos']);
+
 Route::resource('alunos', AlunoController::class);
