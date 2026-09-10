@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Enums\UserRole;
 use App\Models\Aluno;
 use App\Models\User;
 
@@ -20,7 +21,7 @@ class AlunoPolicy
      */
     public function view(User $user, Aluno $aluno): bool
     {
-        return $aluno->user_id === $user->id;
+        return true;
     }
 
     /**
@@ -28,7 +29,7 @@ class AlunoPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->role === UserRole::ADMIN;
     }
 
     /**
@@ -36,7 +37,7 @@ class AlunoPolicy
      */
     public function update(User $user, Aluno $aluno): bool
     {
-        return $aluno->user_id === $user->id;
+        return $user->role === UserRole::PROFESSOR;
     }
 
     /**
@@ -44,7 +45,7 @@ class AlunoPolicy
      */
     public function delete(User $user, Aluno $aluno): bool
     {
-        return $aluno->user_id === $user->id;
+        return $user->role === UserRole::ADMIN;
     }
 
     /**
