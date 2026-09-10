@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AlunoRequest;
 use App\Models\Aluno;
-use Illuminate\Http\Request;
 
 class AlunoController extends Controller
 {
@@ -46,9 +46,9 @@ class AlunoController extends Controller
         return view('alunos.create', compact('aluno'));
     }
 
-    public function store(Request $request)
+    public function store(AlunoRequest $request)
     {
-        $dados = $request->only(['nome', 'curso']);
+        $dados = $request->validated();
 
         Aluno::create($dados);
 
@@ -60,9 +60,9 @@ class AlunoController extends Controller
         return view('alunos.edit', compact('aluno'));
     }
 
-    public function update(Request $request, Aluno $aluno)
+    public function update(AlunoRequest $request, Aluno $aluno)
     {
-        $dados = $request->only(['nome', 'curso']);
+        $dados = $request->validated();
 
         $aluno->update($dados);
 
