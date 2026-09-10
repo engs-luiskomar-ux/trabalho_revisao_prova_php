@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página inicial</title>
-</head>
-<body>
-    <h1>Página inicial</h1>
+@extends('layouts.app')
+
+@section('title', 'Página inicial')
+
+@section('content')
+    <h2>Página inicial</h2>
     <p>Bem-vindo ao sistema de alunos.</p>
-</body>
-</html>
+@endsection

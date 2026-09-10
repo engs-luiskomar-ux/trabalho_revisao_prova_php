@@ -13,5 +13,7 @@
     <main>
         @yield('content')
     </main>
+
+    @include('partials.rodape')
 </body>
 </html>

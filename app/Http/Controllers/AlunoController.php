@@ -8,7 +8,9 @@ class AlunoController extends Controller
 {
     public function index()
     {
-        return view('alunos.index');
+        $alunos = ['Ana', 'Carlos', 'Maria'];
+
+        return view('alunos.index', compact('alunos'));
     }
 
     public function show($id)

@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de alunos</title>
-</head>
-<body>
-    <h1>Lista de alunos</h1>
-    <p>Aqui será exibida a lista de alunos.</p>
-</body>
-</html>
+@extends('layouts.app')
+
+@section('title', 'Lista de alunos')
+
+@section('content')
+    <h2>Lista de alunos</h2>
+
+    @if (count($alunos) > 0)
+        <ul>
+            @foreach ($alunos as $aluno)
+                <li>{{ $aluno }}</li>
+            @endforeach
+        </ul>
+    @else
+        <p>Nenhum aluno cadastrado.</p>
+    @endif
+@endsection
