@@ -21,7 +21,7 @@ class AlunoController extends Controller
 
     public function alunosPorNome($palavra)
     {
-        return Aluno::where('nome', 'like', '%' . $palavra . '%')->get();
+        return Aluno::where('nome', 'like', '%'.$palavra.'%')->get();
     }
 
     public function alunosRecentes()
@@ -31,36 +31,48 @@ class AlunoController extends Controller
 
     public function quantidadeAlunos()
     {
-        return 'Quantidade de alunos: ' . Aluno::count();
+        return 'Quantidade de alunos: '.Aluno::count();
     }
 
-    public function show($id)
+    public function show(Aluno $aluno)
     {
-        return view('alunos.show', compact('id'));
+        return view('alunos.show', compact('aluno'));
     }
 
     public function create()
     {
-        return view('alunos.create');
+        $aluno = new Aluno;
+
+        return view('alunos.create', compact('aluno'));
     }
 
     public function store(Request $request)
     {
-        return 'Aluno cadastrado';
+        $dados = $request->only(['nome', 'curso']);
+
+        Aluno::create($dados);
+
+        return redirect()->route('alunos.index')->with('success', 'Aluno criado com sucesso!');
     }
 
-    public function edit($id)
+    public function edit(Aluno $aluno)
     {
-        return view('alunos.edit', compact('id'));
+        return view('alunos.edit', compact('aluno'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Aluno $aluno)
     {
-        return 'Aluno ' . $id . ' atualizado';
+        $dados = $request->only(['nome', 'curso']);
+
+        $aluno->update($dados);
+
+        return redirect()->route('alunos.index')->with('success', 'Aluno alterado com sucesso!');
     }
 
-    public function destroy($id)
+    public function destroy(Aluno $aluno)
     {
-        return 'Aluno ' . $id . ' excluído';
+        $aluno->delete();
+
+        return redirect()->route('alunos.index')->with('success', 'Aluno excluído com sucesso!');
     }
 }
