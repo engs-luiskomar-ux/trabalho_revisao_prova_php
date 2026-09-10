@@ -10,10 +10,16 @@ class Aluno extends Model
     protected $fillable = [
         'nome',
         'curso_id',
+        'user_id',
     ];
 
     public function curso(): BelongsTo
     {
         return $this->belongsTo(Curso::class);
+    }
+
+    public function usuario(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

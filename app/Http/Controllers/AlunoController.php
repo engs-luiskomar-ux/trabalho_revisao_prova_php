@@ -53,6 +53,7 @@ class AlunoController extends Controller
     public function store(AlunoRequest $request)
     {
         $dados = $request->validated();
+        $dados['user_id'] = auth()->id();
 
         Aluno::create($dados);
 
