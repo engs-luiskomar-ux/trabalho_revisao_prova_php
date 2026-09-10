@@ -8,17 +8,17 @@ class AlunoController extends Controller
 {
     public function index()
     {
-        return 'Lista de alunos';
+        return view('alunos.index');
     }
 
     public function show($id)
     {
-        return 'Mostrando o aluno ' . $id;
+        return view('alunos.show', compact('id'));
     }
 
     public function create()
     {
-        return 'Formulário para cadastrar aluno';
+        return view('alunos.create');
     }
 
     public function store(Request $request)
@@ -28,7 +28,7 @@ class AlunoController extends Controller
 
     public function edit($id)
     {
-        return 'Formulário para editar o aluno ' . $id;
+        return view('alunos.edit', compact('id'));
     }
 
     public function update(Request $request, $id)
