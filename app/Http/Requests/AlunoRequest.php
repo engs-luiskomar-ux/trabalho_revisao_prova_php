@@ -24,7 +24,7 @@ class AlunoRequest extends FormRequest
     {
         return [
             'nome' => 'required|string|max:255',
-            'curso' => 'required|string|max:100',
+            'curso_id' => 'required|integer|exists:cursos,id',
         ];
     }
 
@@ -34,9 +34,9 @@ class AlunoRequest extends FormRequest
             'nome.required' => 'O nome do aluno é obrigatório.',
             'nome.string' => 'O nome deve ser um texto.',
             'nome.max' => 'O nome deve ter no máximo 255 caracteres.',
-            'curso.required' => 'O curso é obrigatório.',
-            'curso.string' => 'O curso deve ser um texto.',
-            'curso.max' => 'O curso deve ter no máximo 100 caracteres.',
+            'curso_id.required' => 'O curso é obrigatório.',
+            'curso_id.integer' => 'O curso selecionado é inválido.',
+            'curso_id.exists' => 'O curso selecionado não existe.',
         ];
     }
 }

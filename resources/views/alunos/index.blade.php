@@ -8,7 +8,7 @@
     @if (count($alunos) > 0)
         <ul>
             @foreach ($alunos as $aluno)
-                <li>{{ $aluno->nome }} - {{ $aluno->curso }}</li>
+                <li>{{ $aluno->nome }} - {{ $aluno->curso->nome }}</li>
             @endforeach
         </ul>
     @else

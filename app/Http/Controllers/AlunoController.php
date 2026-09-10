@@ -4,19 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AlunoRequest;
 use App\Models\Aluno;
+use App\Models\Curso;
 
 class AlunoController extends Controller
 {
     public function index()
     {
-        $alunos = Aluno::all();
+        $alunos = Aluno::with('curso')->get();
 
         return view('alunos.index', compact('alunos'));
     }
 
     public function alunosPorCurso($curso)
     {
-        return Aluno::where('curso', $curso)->get();
+        return Aluno::whereHas('curso', function ($query) use ($curso) {
+            $query->where('nome', $curso);
+        })->get();
     }
 
     public function alunosPorNome($palavra)
@@ -42,8 +45,9 @@ class AlunoController extends Controller
     public function create()
     {
         $aluno = new Aluno;
+        $cursos = Curso::all();
 
-        return view('alunos.create', compact('aluno'));
+        return view('alunos.create', compact('aluno', 'cursos'));
     }
 
     public function store(AlunoRequest $request)
@@ -57,7 +61,9 @@ class AlunoController extends Controller
 
     public function edit(Aluno $aluno)
     {
-        return view('alunos.edit', compact('aluno'));
+        $cursos = Curso::all();
+
+        return view('alunos.edit', compact('aluno', 'cursos'));
     }
 
     public function update(AlunoRequest $request, Aluno $aluno)

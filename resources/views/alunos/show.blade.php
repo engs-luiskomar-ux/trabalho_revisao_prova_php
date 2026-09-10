@@ -5,5 +5,5 @@
 @section('content')
     <h2>Detalhes do aluno</h2>
     <p>Nome: {{ $aluno->nome }}</p>
-    <p>Curso: {{ $aluno->curso }}</p>
+    <p>Curso: {{ $aluno->curso->nome }}</p>
 @endsection

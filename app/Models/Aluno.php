@@ -9,7 +9,6 @@ class Aluno extends Model
 {
     protected $fillable = [
         'nome',
-        'curso',
         'curso_id',
     ];
 
