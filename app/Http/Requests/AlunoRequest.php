@@ -27,4 +27,16 @@ class AlunoRequest extends FormRequest
             'curso' => 'required|string|max:100',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'nome.required' => 'O nome do aluno é obrigatório.',
+            'nome.string' => 'O nome deve ser um texto.',
+            'nome.max' => 'O nome deve ter no máximo 255 caracteres.',
+            'curso.required' => 'O curso é obrigatório.',
+            'curso.string' => 'O curso deve ser um texto.',
+            'curso.max' => 'O curso deve ter no máximo 100 caracteres.',
+        ];
+    }
 }
